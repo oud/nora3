@@ -1,0 +1,32 @@
+{
+  "nora3App": {
+    "resultatSolvable": {
+      "home": {
+        "title": "Resultat Solvables",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Resultat Solvable",
+        "createOrEditLabel": "Create or edit a Resultat Solvable",
+        "notFound": "No Resultat Solvables found"
+      },
+      "created": "A new Resultat Solvable is created with identifier {{ param }}",
+      "updated": "A Resultat Solvable is updated with identifier {{ param }}",
+      "deleted": "A Resultat Solvable is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Resultat Solvable {{ id }}?"
+      },
+      "detail": {
+        "title": "Resultat Solvable"
+      },
+      "id": "ID",
+      "moisSolvabiliteDate": "Mois Solvabilite Date",
+      "codeEtatSolvabilite": "Code Etat Solvabilite",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "rechercheSolvable": "Recherche Solvable"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+<div>
+  <h2 id="page-heading" data-cy="DossierHeading">
+    <span jhiTranslate="nora3App.dossier.home.title">Dossiers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined" />
+        <span jhiTranslate="nora3App.dossier.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-dossier"
+        [routerLink]="['/dossier/new']"
+      >
+        <fa-icon icon="plus" />
+        <span jhiTranslate="nora3App.dossier.home.createLabel">Create a new Dossier</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (dossiers().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="nora3App.dossier.home.notFound">No Dossiers found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numDossierNor">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.numDossierNor">Num Dossier Nor</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numDossierGaia">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.numDossierGaia">Num Dossier Gaia</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="receptionDateNor">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.receptionDateNor">Reception Date Nor</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="validationDateNor">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.validationDateNor">Validation Date Nor</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeOrganisme">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.codeOrganisme">Code Organisme</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeAgent">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.codeAgent">Code Agent</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userCreation">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.userCreation">User Creation</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creationDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.creationDate">Creation Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userMaj">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.userMaj">User Maj</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="majDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.majDate">Maj Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numMaj">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.numMaj">Num Maj</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="debiteur.id">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.debiteur">Debiteur</span>
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creancier.id">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.dossier.creancier">Creancier</span>
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (dossier of dossiers(); track trackId(dossier)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/dossier', dossier.id, 'view']">{{ dossier.id }}</a>
+              </td>
+              <td>{{ dossier.numDossierNor }}</td>
+              <td>{{ dossier.numDossierGaia }}</td>
+              <td>{{ dossier.receptionDateNor }}</td>
+              <td>{{ dossier.validationDateNor }}</td>
+              <td>{{ dossier.codeOrganisme }}</td>
+              <td>{{ dossier.codeAgent }}</td>
+              <td>{{ dossier.userCreation }}</td>
+              <td>{{ dossier.creationDate }}</td>
+              <td>{{ dossier.userMaj }}</td>
+              <td>{{ dossier.majDate }}</td>
+              <td>{{ dossier.numMaj }}</td>
+              <td>
+                @if (dossier.debiteur) {
+                  <div>
+                    <a [routerLink]="['/debiteur', dossier.debiteur.id, 'view']">{{ dossier.debiteur.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (dossier.creancier) {
+                  <div>
+                    <a [routerLink]="['/creancier', dossier.creancier.id, 'view']">{{ dossier.creancier.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/dossier', dossier.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/dossier', dossier.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(dossier)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

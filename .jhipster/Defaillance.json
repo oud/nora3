@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102145"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "moisDefaillance",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "montantPADue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "montantPAVersee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "flagDetteInitiale",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Defaillance",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

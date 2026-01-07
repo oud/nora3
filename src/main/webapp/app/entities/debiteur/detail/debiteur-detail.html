@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (debiteur(); as debiteurRef) {
+      <div>
+        <h2 data-cy="debiteurDetailsHeading"><span jhiTranslate="nora3App.debiteur.detail.title">Debiteur</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ debiteurRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.nir">Nir</span></dt>
+          <dd>
+            <span>{{ debiteurRef.nir }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.cleNir">Cle Nir</span></dt>
+          <dd>
+            <span>{{ debiteurRef.cleNir }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.numAllocCristal">Num Alloc Cristal</span></dt>
+          <dd>
+            <span>{{ debiteurRef.numAllocCristal }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.codeOrganismeCristal">Code Organisme Cristal</span></dt>
+          <dd>
+            <span>{{ debiteurRef.codeOrganismeCristal }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ debiteurRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ debiteurRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ debiteurRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ debiteurRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ debiteurRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.debiteur.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ debiteurRef.numMaj }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/debiteur', debiteurRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-situation-heading" data-cy="SituationCreateUpdateHeading" jhiTranslate="nora3App.situation.home.createOrEditLabel">
+        Create or edit a Situation
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="nora3App.situation.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_situationProDebutDate" jhiTranslate="nora3App.situation.situationProDebutDate"
+            >Situation Pro Debut Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_situationProDebutDate"
+              data-cy="situationProDebutDate"
+              type="text"
+              class="form-control"
+              name="situationProDebutDate"
+              ngbDatepicker
+              #situationProDebutDateDp="ngbDatepicker"
+              formControlName="situationProDebutDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="situationProDebutDateDp.toggle()">
+              <fa-icon icon="calendar-alt" />
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_situationProfinDate" jhiTranslate="nora3App.situation.situationProfinDate"
+            >Situation Profin Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_situationProfinDate"
+              data-cy="situationProfinDate"
+              type="text"
+              class="form-control"
+              name="situationProfinDate"
+              ngbDatepicker
+              #situationProfinDateDp="ngbDatepicker"
+              formControlName="situationProfinDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="situationProfinDateDp.toggle()">
+              <fa-icon icon="calendar-alt" />
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeSituation" jhiTranslate="nora3App.situation.codeSituation">Code Situation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeSituation"
+            id="field_codeSituation"
+            data-cy="codeSituation"
+            formControlName="codeSituation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_commentaire" jhiTranslate="nora3App.situation.commentaire">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeAgent" jhiTranslate="nora3App.situation.codeAgent">Code Agent</label>
+          <input type="text" class="form-control" name="codeAgent" id="field_codeAgent" data-cy="codeAgent" formControlName="codeAgent" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userCreation" jhiTranslate="nora3App.situation.userCreation">User Creation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userCreation"
+            id="field_userCreation"
+            data-cy="userCreation"
+            formControlName="userCreation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creationDate" jhiTranslate="nora3App.situation.creationDate">Creation Date</label>
+          <input
+            type="time"
+            class="form-control"
+            name="creationDate"
+            id="field_creationDate"
+            data-cy="creationDate"
+            formControlName="creationDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userMaj" jhiTranslate="nora3App.situation.userMaj">User Maj</label>
+          <input type="text" class="form-control" name="userMaj" id="field_userMaj" data-cy="userMaj" formControlName="userMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_majDate" jhiTranslate="nora3App.situation.majDate">Maj Date</label>
+          <input type="time" class="form-control" name="majDate" id="field_majDate" data-cy="majDate" formControlName="majDate" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numMaj" jhiTranslate="nora3App.situation.numMaj">Num Maj</label>
+          <input type="number" class="form-control" name="numMaj" id="field_numMaj" data-cy="numMaj" formControlName="numMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_debiteur" jhiTranslate="nora3App.situation.debiteur">Debiteur</label>
+          <select
+            class="form-control"
+            id="field_debiteur"
+            data-cy="debiteur"
+            name="debiteur"
+            formControlName="debiteur"
+            [compareWith]="compareDebiteur"
+          >
+            <option [ngValue]="null"></option>
+            @for (debiteurOption of debiteursSharedCollection(); track $index) {
+              <option [ngValue]="debiteurOption">{{ debiteurOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

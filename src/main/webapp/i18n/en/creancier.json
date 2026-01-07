@@ -1,0 +1,38 @@
+{
+  "nora3App": {
+    "creancier": {
+      "home": {
+        "title": "Creanciers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Creancier",
+        "createOrEditLabel": "Create or edit a Creancier",
+        "notFound": "No Creanciers found"
+      },
+      "created": "A new Creancier is created with identifier {{ param }}",
+      "updated": "A Creancier is updated with identifier {{ param }}",
+      "deleted": "A Creancier is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Creancier {{ id }}?"
+      },
+      "detail": {
+        "title": "Creancier"
+      },
+      "id": "ID",
+      "nir": "Nir",
+      "cleNir": "Cle Nir",
+      "numAllocCristal": "Num Alloc Cristal",
+      "numPersonneCristal": "Num Personne Cristal",
+      "codeOrganismeCristal": "Code Organisme Cristal",
+      "situationFamilialeDebutDate": "Situation Familiale Debut Date",
+      "codeSituationFamiliale": "Code Situation Familiale",
+      "codeNationalite": "Code Nationalite",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "dossier": "Dossier"
+    }
+  }
+}

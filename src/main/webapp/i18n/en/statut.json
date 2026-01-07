@@ -1,0 +1,34 @@
+{
+  "nora3App": {
+    "statut": {
+      "home": {
+        "title": "Statuts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Statut",
+        "createOrEditLabel": "Create or edit a Statut",
+        "notFound": "No Statuts found"
+      },
+      "created": "A new Statut is created with identifier {{ param }}",
+      "updated": "A Statut is updated with identifier {{ param }}",
+      "deleted": "A Statut is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Statut {{ id }}?"
+      },
+      "detail": {
+        "title": "Statut"
+      },
+      "id": "ID",
+      "statutDebutDate": "Statut Debut Date",
+      "statutFinDate": "Statut Fin Date",
+      "codeStatut": "Code Statut",
+      "motifStatut": "Motif Statut",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "dossier": "Dossier"
+    }
+  }
+}

@@ -27,7 +27,7 @@ entity Statut {
 
 entity Creancier {
 	nir String
-    cleNir Number
+    cleNir Integer
     numAllocCristal Integer
     numPersonneCristal Integer
     codeOrganismeCristal String
@@ -44,7 +44,7 @@ entity Creancier {
 
 entity Debiteur {
 	nir String
-    cleNir Number
+    cleNir Integer
     numAllocCristal Integer
     codeOrganismeCristal String
 	codeAgent String
@@ -57,7 +57,7 @@ entity Debiteur {
 
 entity Enfant {
 	nir String
-    cleNir Number
+    cleNir Integer
     numPersonneGaia Integer
 	codeAgent String
     userCreation String
@@ -116,8 +116,8 @@ entity ResultatSolvable {
 
 entity Defaillance {
 	moisDefaillance LocalDate
-    montantPADue Number
-    montantPAVersee Number
+    montantPADue BigDecimal
+    montantPAVersee BigDecimal
     flagDetteInitiale Boolean
 	codeAgent String
     userCreation String

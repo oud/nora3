@@ -1,0 +1,150 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-demarche-heading" data-cy="DemarcheCreateUpdateHeading" jhiTranslate="nora3App.demarche.home.createOrEditLabel">
+        Create or edit a Demarche
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="nora3App.demarche.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_demarcheDate" jhiTranslate="nora3App.demarche.demarcheDate">Demarche Date</label>
+          <div class="input-group">
+            <input
+              id="field_demarcheDate"
+              data-cy="demarcheDate"
+              type="text"
+              class="form-control"
+              name="demarcheDate"
+              ngbDatepicker
+              #demarcheDateDp="ngbDatepicker"
+              formControlName="demarcheDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="demarcheDateDp.toggle()"><fa-icon icon="calendar-alt" /></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numDemarche" jhiTranslate="nora3App.demarche.numDemarche">Num Demarche</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numDemarche"
+            id="field_numDemarche"
+            data-cy="numDemarche"
+            formControlName="numDemarche"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeOrigine" jhiTranslate="nora3App.demarche.codeOrigine">Code Origine</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeOrigine"
+            id="field_codeOrigine"
+            data-cy="codeOrigine"
+            formControlName="codeOrigine"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeStatut" jhiTranslate="nora3App.demarche.codeStatut">Code Statut</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeStatut"
+            id="field_codeStatut"
+            data-cy="codeStatut"
+            formControlName="codeStatut"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeAgent" jhiTranslate="nora3App.demarche.codeAgent">Code Agent</label>
+          <input type="text" class="form-control" name="codeAgent" id="field_codeAgent" data-cy="codeAgent" formControlName="codeAgent" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userCreation" jhiTranslate="nora3App.demarche.userCreation">User Creation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userCreation"
+            id="field_userCreation"
+            data-cy="userCreation"
+            formControlName="userCreation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creationDate" jhiTranslate="nora3App.demarche.creationDate">Creation Date</label>
+          <input
+            type="time"
+            class="form-control"
+            name="creationDate"
+            id="field_creationDate"
+            data-cy="creationDate"
+            formControlName="creationDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userMaj" jhiTranslate="nora3App.demarche.userMaj">User Maj</label>
+          <input type="text" class="form-control" name="userMaj" id="field_userMaj" data-cy="userMaj" formControlName="userMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_majDate" jhiTranslate="nora3App.demarche.majDate">Maj Date</label>
+          <input type="time" class="form-control" name="majDate" id="field_majDate" data-cy="majDate" formControlName="majDate" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numMaj" jhiTranslate="nora3App.demarche.numMaj">Num Maj</label>
+          <input type="number" class="form-control" name="numMaj" id="field_numMaj" data-cy="numMaj" formControlName="numMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dossier" jhiTranslate="nora3App.demarche.dossier">Dossier</label>
+          <select
+            class="form-control"
+            id="field_dossier"
+            data-cy="dossier"
+            name="dossier"
+            formControlName="dossier"
+            [compareWith]="compareDossier"
+          >
+            <option [ngValue]="null"></option>
+            @for (dossierOption of dossiersSharedCollection(); track $index) {
+              <option [ngValue]="dossierOption">{{ dossierOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (resultatSolvable(); as resultatSolvableRef) {
+      <div>
+        <h2 data-cy="resultatSolvableDetailsHeading">
+          <span jhiTranslate="nora3App.resultatSolvable.detail.title">Resultat Solvable</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.moisSolvabiliteDate">Mois Solvabilite Date</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.moisSolvabiliteDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.codeEtatSolvabilite">Code Etat Solvabilite</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.codeEtatSolvabilite }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ resultatSolvableRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.resultatSolvable.rechercheSolvable">Recherche Solvable</span></dt>
+          <dd>
+            @if (resultatSolvable()!.rechercheSolvable) {
+              <div>
+                <a [routerLink]="['/recherche-solvable', resultatSolvable()!.rechercheSolvable?.id, 'view']">{{
+                  resultatSolvableRef.rechercheSolvable?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/resultat-solvable', resultatSolvableRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

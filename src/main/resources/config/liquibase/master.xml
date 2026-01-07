@@ -19,7 +19,25 @@
     <property name="timeType" value="time(6)" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102136_added_entity_Dossier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102137_added_entity_Statut.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102138_added_entity_Creancier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102139_added_entity_Debiteur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102140_added_entity_Enfant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102141_added_entity_Demarche.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102142_added_entity_Situation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102143_added_entity_RechercheSolvable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102144_added_entity_ResultatSolvable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102145_added_entity_Defaillance.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20260107102136_added_entity_constraints_Dossier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102137_added_entity_constraints_Statut.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102140_added_entity_constraints_Enfant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102141_added_entity_constraints_Demarche.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102142_added_entity_constraints_Situation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102143_added_entity_constraints_RechercheSolvable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102144_added_entity_constraints_ResultatSolvable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260107102145_added_entity_constraints_Defaillance.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

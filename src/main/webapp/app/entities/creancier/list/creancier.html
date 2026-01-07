@@ -1,0 +1,188 @@
+<div>
+  <h2 id="page-heading" data-cy="CreancierHeading">
+    <span jhiTranslate="nora3App.creancier.home.title">Creanciers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined" />
+        <span jhiTranslate="nora3App.creancier.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-creancier"
+        [routerLink]="['/creancier/new']"
+      >
+        <fa-icon icon="plus" />
+        <span jhiTranslate="nora3App.creancier.home.createLabel">Create a new Creancier</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (creanciers().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="nora3App.creancier.home.notFound">No Creanciers found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nir">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.nir">Nir</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cleNir">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.cleNir">Cle Nir</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numAllocCristal">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.numAllocCristal">Num Alloc Cristal</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numPersonneCristal">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.numPersonneCristal">Num Personne Cristal</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeOrganismeCristal">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.codeOrganismeCristal">Code Organisme Cristal</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="situationFamilialeDebutDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.situationFamilialeDebutDate">Situation Familiale Debut Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeSituationFamiliale">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.codeSituationFamiliale">Code Situation Familiale</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeNationalite">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.codeNationalite">Code Nationalite</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeAgent">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.codeAgent">Code Agent</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userCreation">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.userCreation">User Creation</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creationDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.creationDate">Creation Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userMaj">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.userMaj">User Maj</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="majDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.majDate">Maj Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numMaj">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.creancier.numMaj">Num Maj</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (creancier of creanciers(); track trackId(creancier)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/creancier', creancier.id, 'view']">{{ creancier.id }}</a>
+              </td>
+              <td>{{ creancier.nir }}</td>
+              <td>{{ creancier.cleNir }}</td>
+              <td>{{ creancier.numAllocCristal }}</td>
+              <td>{{ creancier.numPersonneCristal }}</td>
+              <td>{{ creancier.codeOrganismeCristal }}</td>
+              <td>{{ creancier.situationFamilialeDebutDate | formatMediumDate }}</td>
+              <td>{{ creancier.codeSituationFamiliale }}</td>
+              <td>{{ creancier.codeNationalite }}</td>
+              <td>{{ creancier.codeAgent }}</td>
+              <td>{{ creancier.userCreation }}</td>
+              <td>{{ creancier.creationDate }}</td>
+              <td>{{ creancier.userMaj }}</td>
+              <td>{{ creancier.majDate }}</td>
+              <td>{{ creancier.numMaj }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/creancier', creancier.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/creancier', creancier.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(creancier)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

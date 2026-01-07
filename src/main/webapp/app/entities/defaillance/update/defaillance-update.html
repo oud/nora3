@@ -1,0 +1,154 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-defaillance-heading" data-cy="DefaillanceCreateUpdateHeading" jhiTranslate="nora3App.defaillance.home.createOrEditLabel">
+        Create or edit a Defaillance
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="nora3App.defaillance.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_moisDefaillance" jhiTranslate="nora3App.defaillance.moisDefaillance">Mois Defaillance</label>
+          <div class="input-group">
+            <input
+              id="field_moisDefaillance"
+              data-cy="moisDefaillance"
+              type="text"
+              class="form-control"
+              name="moisDefaillance"
+              ngbDatepicker
+              #moisDefaillanceDp="ngbDatepicker"
+              formControlName="moisDefaillance"
+            />
+            <button type="button" class="btn btn-secondary" (click)="moisDefaillanceDp.toggle()"><fa-icon icon="calendar-alt" /></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_montantPADue" jhiTranslate="nora3App.defaillance.montantPADue">Montant PA Due</label>
+          <input
+            type="number"
+            class="form-control"
+            name="montantPADue"
+            id="field_montantPADue"
+            data-cy="montantPADue"
+            formControlName="montantPADue"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_montantPAVersee" jhiTranslate="nora3App.defaillance.montantPAVersee"
+            >Montant PA Versee</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="montantPAVersee"
+            id="field_montantPAVersee"
+            data-cy="montantPAVersee"
+            formControlName="montantPAVersee"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_flagDetteInitiale" jhiTranslate="nora3App.defaillance.flagDetteInitiale"
+            >Flag Dette Initiale</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="flagDetteInitiale"
+            id="field_flagDetteInitiale"
+            data-cy="flagDetteInitiale"
+            formControlName="flagDetteInitiale"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeAgent" jhiTranslate="nora3App.defaillance.codeAgent">Code Agent</label>
+          <input type="text" class="form-control" name="codeAgent" id="field_codeAgent" data-cy="codeAgent" formControlName="codeAgent" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userCreation" jhiTranslate="nora3App.defaillance.userCreation">User Creation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userCreation"
+            id="field_userCreation"
+            data-cy="userCreation"
+            formControlName="userCreation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creationDate" jhiTranslate="nora3App.defaillance.creationDate">Creation Date</label>
+          <input
+            type="time"
+            class="form-control"
+            name="creationDate"
+            id="field_creationDate"
+            data-cy="creationDate"
+            formControlName="creationDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userMaj" jhiTranslate="nora3App.defaillance.userMaj">User Maj</label>
+          <input type="text" class="form-control" name="userMaj" id="field_userMaj" data-cy="userMaj" formControlName="userMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_majDate" jhiTranslate="nora3App.defaillance.majDate">Maj Date</label>
+          <input type="time" class="form-control" name="majDate" id="field_majDate" data-cy="majDate" formControlName="majDate" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numMaj" jhiTranslate="nora3App.defaillance.numMaj">Num Maj</label>
+          <input type="number" class="form-control" name="numMaj" id="field_numMaj" data-cy="numMaj" formControlName="numMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dossier" jhiTranslate="nora3App.defaillance.dossier">Dossier</label>
+          <select
+            class="form-control"
+            id="field_dossier"
+            data-cy="dossier"
+            name="dossier"
+            formControlName="dossier"
+            [compareWith]="compareDossier"
+          >
+            <option [ngValue]="null"></option>
+            @for (dossierOption of dossiersSharedCollection(); track $index) {
+              <option [ngValue]="dossierOption">{{ dossierOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

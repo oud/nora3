@@ -1,0 +1,34 @@
+{
+  "nora3App": {
+    "defaillance": {
+      "home": {
+        "title": "Defaillances",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Defaillance",
+        "createOrEditLabel": "Create or edit a Defaillance",
+        "notFound": "No Defaillances found"
+      },
+      "created": "A new Defaillance is created with identifier {{ param }}",
+      "updated": "A Defaillance is updated with identifier {{ param }}",
+      "deleted": "A Defaillance is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Defaillance {{ id }}?"
+      },
+      "detail": {
+        "title": "Defaillance"
+      },
+      "id": "ID",
+      "moisDefaillance": "Mois Defaillance",
+      "montantPADue": "Montant PA Due",
+      "montantPAVersee": "Montant PA Versee",
+      "flagDetteInitiale": "Flag Dette Initiale",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "dossier": "Dossier"
+    }
+  }
+}

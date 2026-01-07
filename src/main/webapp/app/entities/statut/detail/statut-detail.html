@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (statut(); as statutRef) {
+      <div>
+        <h2 data-cy="statutDetailsHeading"><span jhiTranslate="nora3App.statut.detail.title">Statut</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ statutRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.statutDebutDate">Statut Debut Date</span></dt>
+          <dd>
+            <span>{{ statutRef.statutDebutDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.statutFinDate">Statut Fin Date</span></dt>
+          <dd>
+            <span>{{ statutRef.statutFinDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.codeStatut">Code Statut</span></dt>
+          <dd>
+            <span>{{ statutRef.codeStatut }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.motifStatut">Motif Statut</span></dt>
+          <dd>
+            <span>{{ statutRef.motifStatut }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ statutRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ statutRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ statutRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ statutRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ statutRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ statutRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.statut.dossier">Dossier</span></dt>
+          <dd>
+            @if (statut()!.dossier) {
+              <div>
+                <a [routerLink]="['/dossier', statut()!.dossier?.id, 'view']">{{ statutRef.dossier?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/statut', statutRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

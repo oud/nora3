@@ -1,0 +1,34 @@
+{
+  "nora3App": {
+    "situation": {
+      "home": {
+        "title": "Situations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Situation",
+        "createOrEditLabel": "Create or edit a Situation",
+        "notFound": "No Situations found"
+      },
+      "created": "A new Situation is created with identifier {{ param }}",
+      "updated": "A Situation is updated with identifier {{ param }}",
+      "deleted": "A Situation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Situation {{ id }}?"
+      },
+      "detail": {
+        "title": "Situation"
+      },
+      "id": "ID",
+      "situationProDebutDate": "Situation Pro Debut Date",
+      "situationProfinDate": "Situation Profin Date",
+      "codeSituation": "Code Situation",
+      "commentaire": "Commentaire",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "debiteur": "Debiteur"
+    }
+  }
+}

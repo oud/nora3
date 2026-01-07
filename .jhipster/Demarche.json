@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102141"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "demarcheDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "numDemarche",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeOrigine",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeStatut",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Demarche",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

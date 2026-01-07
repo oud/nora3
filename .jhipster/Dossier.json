@@ -1,0 +1,94 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102136"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "numDossierNor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numDossierGaia",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receptionDateNor",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "validationDateNor",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "codeOrganisme",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Dossier",
+  "relationships": [
+    {
+      "otherEntityName": "debiteur",
+      "relationshipName": "debiteur",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "creancier",
+      "relationshipName": "creancier",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "statut",
+      "relationshipName": "statut",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "enfant",
+      "relationshipName": "enfant",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "demarche",
+      "relationshipName": "demarche",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "defaillance",
+      "relationshipName": "defaillance",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,176 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-dossier-heading" data-cy="DossierCreateUpdateHeading" jhiTranslate="nora3App.dossier.home.createOrEditLabel">
+        Create or edit a Dossier
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="nora3App.dossier.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numDossierNor" jhiTranslate="nora3App.dossier.numDossierNor">Num Dossier Nor</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numDossierNor"
+            id="field_numDossierNor"
+            data-cy="numDossierNor"
+            formControlName="numDossierNor"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numDossierGaia" jhiTranslate="nora3App.dossier.numDossierGaia">Num Dossier Gaia</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numDossierGaia"
+            id="field_numDossierGaia"
+            data-cy="numDossierGaia"
+            formControlName="numDossierGaia"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_receptionDateNor" jhiTranslate="nora3App.dossier.receptionDateNor">Reception Date Nor</label>
+          <input
+            type="time"
+            class="form-control"
+            name="receptionDateNor"
+            id="field_receptionDateNor"
+            data-cy="receptionDateNor"
+            formControlName="receptionDateNor"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_validationDateNor" jhiTranslate="nora3App.dossier.validationDateNor"
+            >Validation Date Nor</label
+          >
+          <input
+            type="time"
+            class="form-control"
+            name="validationDateNor"
+            id="field_validationDateNor"
+            data-cy="validationDateNor"
+            formControlName="validationDateNor"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeOrganisme" jhiTranslate="nora3App.dossier.codeOrganisme">Code Organisme</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeOrganisme"
+            id="field_codeOrganisme"
+            data-cy="codeOrganisme"
+            formControlName="codeOrganisme"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeAgent" jhiTranslate="nora3App.dossier.codeAgent">Code Agent</label>
+          <input type="text" class="form-control" name="codeAgent" id="field_codeAgent" data-cy="codeAgent" formControlName="codeAgent" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userCreation" jhiTranslate="nora3App.dossier.userCreation">User Creation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userCreation"
+            id="field_userCreation"
+            data-cy="userCreation"
+            formControlName="userCreation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creationDate" jhiTranslate="nora3App.dossier.creationDate">Creation Date</label>
+          <input
+            type="time"
+            class="form-control"
+            name="creationDate"
+            id="field_creationDate"
+            data-cy="creationDate"
+            formControlName="creationDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userMaj" jhiTranslate="nora3App.dossier.userMaj">User Maj</label>
+          <input type="text" class="form-control" name="userMaj" id="field_userMaj" data-cy="userMaj" formControlName="userMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_majDate" jhiTranslate="nora3App.dossier.majDate">Maj Date</label>
+          <input type="time" class="form-control" name="majDate" id="field_majDate" data-cy="majDate" formControlName="majDate" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numMaj" jhiTranslate="nora3App.dossier.numMaj">Num Maj</label>
+          <input type="number" class="form-control" name="numMaj" id="field_numMaj" data-cy="numMaj" formControlName="numMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_debiteur" jhiTranslate="nora3App.dossier.debiteur">Debiteur</label>
+          <select
+            class="form-control"
+            id="field_debiteur"
+            data-cy="debiteur"
+            name="debiteur"
+            formControlName="debiteur"
+            [compareWith]="compareDebiteur"
+          >
+            <option [ngValue]="null"></option>
+            @for (debiteurOption of debiteursCollection(); track $index) {
+              <option [ngValue]="debiteurOption">{{ debiteurOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creancier" jhiTranslate="nora3App.dossier.creancier">Creancier</label>
+          <select
+            class="form-control"
+            id="field_creancier"
+            data-cy="creancier"
+            name="creancier"
+            formControlName="creancier"
+            [compareWith]="compareCreancier"
+          >
+            <option [ngValue]="null"></option>
+            @for (creancierOption of creanciersCollection(); track $index) {
+              <option [ngValue]="creancierOption">{{ creancierOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

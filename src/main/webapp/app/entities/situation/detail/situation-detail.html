@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (situation(); as situationRef) {
+      <div>
+        <h2 data-cy="situationDetailsHeading"><span jhiTranslate="nora3App.situation.detail.title">Situation</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ situationRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.situationProDebutDate">Situation Pro Debut Date</span></dt>
+          <dd>
+            <span>{{ situationRef.situationProDebutDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.situationProfinDate">Situation Profin Date</span></dt>
+          <dd>
+            <span>{{ situationRef.situationProfinDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.codeSituation">Code Situation</span></dt>
+          <dd>
+            <span>{{ situationRef.codeSituation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.commentaire">Commentaire</span></dt>
+          <dd>
+            <span>{{ situationRef.commentaire }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ situationRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ situationRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ situationRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ situationRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ situationRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ situationRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.situation.debiteur">Debiteur</span></dt>
+          <dd>
+            @if (situation()!.debiteur) {
+              <div>
+                <a [routerLink]="['/debiteur', situation()!.debiteur?.id, 'view']">{{ situationRef.debiteur?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/situation', situationRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

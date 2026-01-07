@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102140"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nir",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cleNir",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numPersonneGaia",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Enfant",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

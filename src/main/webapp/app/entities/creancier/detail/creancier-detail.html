@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (creancier(); as creancierRef) {
+      <div>
+        <h2 data-cy="creancierDetailsHeading"><span jhiTranslate="nora3App.creancier.detail.title">Creancier</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ creancierRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.nir">Nir</span></dt>
+          <dd>
+            <span>{{ creancierRef.nir }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.cleNir">Cle Nir</span></dt>
+          <dd>
+            <span>{{ creancierRef.cleNir }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.numAllocCristal">Num Alloc Cristal</span></dt>
+          <dd>
+            <span>{{ creancierRef.numAllocCristal }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.numPersonneCristal">Num Personne Cristal</span></dt>
+          <dd>
+            <span>{{ creancierRef.numPersonneCristal }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.codeOrganismeCristal">Code Organisme Cristal</span></dt>
+          <dd>
+            <span>{{ creancierRef.codeOrganismeCristal }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.situationFamilialeDebutDate">Situation Familiale Debut Date</span></dt>
+          <dd>
+            <span>{{ creancierRef.situationFamilialeDebutDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.codeSituationFamiliale">Code Situation Familiale</span></dt>
+          <dd>
+            <span>{{ creancierRef.codeSituationFamiliale }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.codeNationalite">Code Nationalite</span></dt>
+          <dd>
+            <span>{{ creancierRef.codeNationalite }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ creancierRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ creancierRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ creancierRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ creancierRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ creancierRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.creancier.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ creancierRef.numMaj }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/creancier', creancierRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
