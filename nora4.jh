@@ -1,0 +1,244 @@
+entity Dossier {
+	numDossierNor String
+    numDossierGaia String
+    receptionDateNor LocalTime
+    validationDateNor LocalTime
+    codeOrganisme String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Personne {
+	nir String
+    cleNir String
+    numAllocCristal Integer
+    numPersonneCristal Integer
+    codeOrganisme String
+    typeOrganisme String
+    numInterneTiers Integer
+    numTiers Integer
+    rangTiers Integer
+    situationFamilialeDebutDate LocalDate
+    codeSituationFamiliale String
+    codeNationalite String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Beneficiaire {
+	montantPA BigDecimal
+    sortieDate LocalDate
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity EventAripa {
+	statut String 
+    origine String
+    numDossierAripa String
+    nirUsager String
+    motif String
+    detailMotif Blob
+    eventDate LocalDate
+    eventFinDate LocalDate
+    codeOrganisme String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Event {
+    traitementMotif String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Action {
+	numDossier String
+    numDemarche String
+    codeOrganisme String
+    action String
+    detailAction String
+    valeurAv String
+    valeurAp String
+    actionDate LocalTime
+    codeOrigine String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Procedure {
+	rang Integer
+    codeNature String
+    initDate LocalDate
+    echeancierAccepteDate LocalDate
+    surveillanceFinDate LocalDate
+    clotureDate LocalDate
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Penalite {
+	montantImplante BigDecimal
+    montantRemise BigDecimal
+    solde BigDecimal
+    creationDate LocalDate
+    delaiFinDate LocalDate
+    recoursDate LocalDate
+    codeMotifRecours String
+    commentaireRemise String
+    decisionDate LocalDate
+    accord Boolean
+    annulationRemiseDtteDate LocalDate
+    codeMotifAnnulation String
+    commentaireAnnulation String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity TitreExec {
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Statut {
+	statutDebutDate LocalTime
+    statutFinDate LocalTime
+    codeStatut String
+    motifStatut String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Creancier {
+}
+
+entity Debiteur {
+}
+
+entity Demarche {
+	demarcheDate LocalDate
+    numDemarche String
+    codeOrigine String
+    codeStatut String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Situation {
+	situationProDebutDate LocalDate
+    situationProfinDate LocalDate
+    codeSituation String
+    commentaire String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity RechercheSolvable {
+	rechercheSolvabiliteDebutDate LocalTime
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity ResultatSolvable {
+	moisSolvabiliteDate LocalDate
+    codeEtatSolvabilite String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Defaillance {
+	moisDefaillance LocalDate
+    montantPADue BigDecimal
+    montantPAVersee BigDecimal
+    flagDetteInitiale Boolean
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer	
+}
+
+relationship OneToOne {
+	Personne{debiteur} to Debiteur
+    Personne{creancier} to Creancier
+    Dossier{debiteur} to Debiteur
+    Dossier{creancier} to Creancier
+    Beneficiaire{personne} to Personne
+    Beneficiaire{titreExec} to TitreExec
+    TitreExec{dossier} to Dossier
+}
+
+relationship OneToMany {
+    Dossier{defaillance} to Defaillance
+    Dossier{demarche} to Demarche
+    Dossier{procedure} to Procedure
+    Dossier{statut} to Statut
+    Dossier{penalite} to Penalite
+    Debiteur{situation} to Situation
+    Debiteur{recherche} to RechercheSolvable
+    RechercheSolvable{resultat} to ResultatSolvable
+	EventAripa{event} to Event
+}
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
