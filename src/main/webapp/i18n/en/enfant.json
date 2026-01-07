@@ -1,0 +1,33 @@
+{
+  "nora3App": {
+    "enfant": {
+      "home": {
+        "title": "Enfants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Enfant",
+        "createOrEditLabel": "Create or edit a Enfant",
+        "notFound": "No Enfants found"
+      },
+      "created": "A new Enfant is created with identifier {{ param }}",
+      "updated": "A Enfant is updated with identifier {{ param }}",
+      "deleted": "A Enfant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Enfant {{ id }}?"
+      },
+      "detail": {
+        "title": "Enfant"
+      },
+      "id": "ID",
+      "nir": "Nir",
+      "cleNir": "Cle Nir",
+      "numPersonneGaia": "Num Personne Gaia",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "dossier": "Dossier"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102142"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "situationProDebutDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "situationProfinDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "codeSituation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Situation",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,138 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-resultat-solvable-heading"
+        data-cy="ResultatSolvableCreateUpdateHeading"
+        jhiTranslate="nora3App.resultatSolvable.home.createOrEditLabel"
+      >
+        Create or edit a Resultat Solvable
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="nora3App.resultatSolvable.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_moisSolvabiliteDate" jhiTranslate="nora3App.resultatSolvable.moisSolvabiliteDate"
+            >Mois Solvabilite Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_moisSolvabiliteDate"
+              data-cy="moisSolvabiliteDate"
+              type="text"
+              class="form-control"
+              name="moisSolvabiliteDate"
+              ngbDatepicker
+              #moisSolvabiliteDateDp="ngbDatepicker"
+              formControlName="moisSolvabiliteDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="moisSolvabiliteDateDp.toggle()">
+              <fa-icon icon="calendar-alt" />
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeEtatSolvabilite" jhiTranslate="nora3App.resultatSolvable.codeEtatSolvabilite"
+            >Code Etat Solvabilite</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeEtatSolvabilite"
+            id="field_codeEtatSolvabilite"
+            data-cy="codeEtatSolvabilite"
+            formControlName="codeEtatSolvabilite"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeAgent" jhiTranslate="nora3App.resultatSolvable.codeAgent">Code Agent</label>
+          <input type="text" class="form-control" name="codeAgent" id="field_codeAgent" data-cy="codeAgent" formControlName="codeAgent" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userCreation" jhiTranslate="nora3App.resultatSolvable.userCreation">User Creation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userCreation"
+            id="field_userCreation"
+            data-cy="userCreation"
+            formControlName="userCreation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_creationDate" jhiTranslate="nora3App.resultatSolvable.creationDate">Creation Date</label>
+          <input
+            type="time"
+            class="form-control"
+            name="creationDate"
+            id="field_creationDate"
+            data-cy="creationDate"
+            formControlName="creationDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userMaj" jhiTranslate="nora3App.resultatSolvable.userMaj">User Maj</label>
+          <input type="text" class="form-control" name="userMaj" id="field_userMaj" data-cy="userMaj" formControlName="userMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_majDate" jhiTranslate="nora3App.resultatSolvable.majDate">Maj Date</label>
+          <input type="time" class="form-control" name="majDate" id="field_majDate" data-cy="majDate" formControlName="majDate" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numMaj" jhiTranslate="nora3App.resultatSolvable.numMaj">Num Maj</label>
+          <input type="number" class="form-control" name="numMaj" id="field_numMaj" data-cy="numMaj" formControlName="numMaj" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rechercheSolvable" jhiTranslate="nora3App.resultatSolvable.rechercheSolvable"
+            >Recherche Solvable</label
+          >
+          <select
+            class="form-control"
+            id="field_rechercheSolvable"
+            data-cy="rechercheSolvable"
+            name="rechercheSolvable"
+            formControlName="rechercheSolvable"
+            [compareWith]="compareRechercheSolvable"
+          >
+            <option [ngValue]="null"></option>
+            @for (rechercheSolvableOption of rechercheSolvablesSharedCollection(); track $index) {
+              <option [ngValue]="rechercheSolvableOption">{{ rechercheSolvableOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

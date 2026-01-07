@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102137"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "statutDebutDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "statutFinDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "codeStatut",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "motifStatut",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Statut",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

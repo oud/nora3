@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (demarche(); as demarcheRef) {
+      <div>
+        <h2 data-cy="demarcheDetailsHeading"><span jhiTranslate="nora3App.demarche.detail.title">Demarche</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ demarcheRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.demarcheDate">Demarche Date</span></dt>
+          <dd>
+            <span>{{ demarcheRef.demarcheDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.numDemarche">Num Demarche</span></dt>
+          <dd>
+            <span>{{ demarcheRef.numDemarche }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.codeOrigine">Code Origine</span></dt>
+          <dd>
+            <span>{{ demarcheRef.codeOrigine }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.codeStatut">Code Statut</span></dt>
+          <dd>
+            <span>{{ demarcheRef.codeStatut }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ demarcheRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ demarcheRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ demarcheRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ demarcheRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ demarcheRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ demarcheRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.demarche.dossier">Dossier</span></dt>
+          <dd>
+            @if (demarche()!.dossier) {
+              <div>
+                <a [routerLink]="['/dossier', demarche()!.dossier?.id, 'view']">{{ demarcheRef.dossier?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/demarche', demarcheRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

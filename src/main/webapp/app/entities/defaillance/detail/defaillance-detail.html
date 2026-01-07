@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (defaillance(); as defaillanceRef) {
+      <div>
+        <h2 data-cy="defaillanceDetailsHeading"><span jhiTranslate="nora3App.defaillance.detail.title">Defaillance</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.moisDefaillance">Mois Defaillance</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.moisDefaillance | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.montantPADue">Montant PA Due</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.montantPADue }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.montantPAVersee">Montant PA Versee</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.montantPAVersee }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.flagDetteInitiale">Flag Dette Initiale</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.flagDetteInitiale }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ defaillanceRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.defaillance.dossier">Dossier</span></dt>
+          <dd>
+            @if (defaillance()!.dossier) {
+              <div>
+                <a [routerLink]="['/dossier', defaillance()!.dossier?.id, 'view']">{{ defaillanceRef.dossier?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/defaillance', defaillanceRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

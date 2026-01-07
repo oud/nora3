@@ -1,0 +1,169 @@
+<div>
+  <h2 id="page-heading" data-cy="DefaillanceHeading">
+    <span jhiTranslate="nora3App.defaillance.home.title">Defaillances</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined" />
+        <span jhiTranslate="nora3App.defaillance.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-defaillance"
+        [routerLink]="['/defaillance/new']"
+      >
+        <fa-icon icon="plus" />
+        <span jhiTranslate="nora3App.defaillance.home.createLabel">Create a new Defaillance</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (defaillances().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="nora3App.defaillance.home.notFound">No Defaillances found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="moisDefaillance">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.moisDefaillance">Mois Defaillance</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="montantPADue">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.montantPADue">Montant PA Due</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="montantPAVersee">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.montantPAVersee">Montant PA Versee</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="flagDetteInitiale">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.flagDetteInitiale">Flag Dette Initiale</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeAgent">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.codeAgent">Code Agent</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userCreation">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.userCreation">User Creation</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creationDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.creationDate">Creation Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userMaj">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.userMaj">User Maj</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="majDate">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.majDate">Maj Date</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numMaj">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.numMaj">Num Maj</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dossier.id">
+              <div class="d-flex">
+                <span jhiTranslate="nora3App.defaillance.dossier">Dossier</span>
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (defaillance of defaillances(); track trackId(defaillance)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/defaillance', defaillance.id, 'view']">{{ defaillance.id }}</a>
+              </td>
+              <td>{{ defaillance.moisDefaillance | formatMediumDate }}</td>
+              <td>{{ defaillance.montantPADue }}</td>
+              <td>{{ defaillance.montantPAVersee }}</td>
+              <td>{{ defaillance.flagDetteInitiale }}</td>
+              <td>{{ defaillance.codeAgent }}</td>
+              <td>{{ defaillance.userCreation }}</td>
+              <td>{{ defaillance.creationDate }}</td>
+              <td>{{ defaillance.userMaj }}</td>
+              <td>{{ defaillance.majDate }}</td>
+              <td>{{ defaillance.numMaj }}</td>
+              <td>
+                @if (defaillance.dossier) {
+                  <div>
+                    <a [routerLink]="['/dossier', defaillance.dossier.id, 'view']">{{ defaillance.dossier.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/defaillance', defaillance.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/defaillance', defaillance.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(defaillance)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

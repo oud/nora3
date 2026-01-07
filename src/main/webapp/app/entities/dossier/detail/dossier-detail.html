@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (dossier(); as dossierRef) {
+      <div>
+        <h2 data-cy="dossierDetailsHeading"><span jhiTranslate="nora3App.dossier.detail.title">Dossier</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ dossierRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.numDossierNor">Num Dossier Nor</span></dt>
+          <dd>
+            <span>{{ dossierRef.numDossierNor }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.numDossierGaia">Num Dossier Gaia</span></dt>
+          <dd>
+            <span>{{ dossierRef.numDossierGaia }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.receptionDateNor">Reception Date Nor</span></dt>
+          <dd>
+            <span>{{ dossierRef.receptionDateNor }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.validationDateNor">Validation Date Nor</span></dt>
+          <dd>
+            <span>{{ dossierRef.validationDateNor }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.codeOrganisme">Code Organisme</span></dt>
+          <dd>
+            <span>{{ dossierRef.codeOrganisme }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ dossierRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ dossierRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ dossierRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ dossierRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ dossierRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ dossierRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.debiteur">Debiteur</span></dt>
+          <dd>
+            @if (dossier()!.debiteur) {
+              <div>
+                <a [routerLink]="['/debiteur', dossier()!.debiteur?.id, 'view']">{{ dossierRef.debiteur?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="nora3App.dossier.creancier">Creancier</span></dt>
+          <dd>
+            @if (dossier()!.creancier) {
+              <div>
+                <a [routerLink]="['/creancier', dossier()!.creancier?.id, 'view']">{{ dossierRef.creancier?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/dossier', dossierRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -50,6 +50,23 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.User.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
             createCache(cm, com.mycompany.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.myapp.domain.Dossier.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Dossier.class.getName() + ".statuts");
+            createCache(cm, com.mycompany.myapp.domain.Dossier.class.getName() + ".enfants");
+            createCache(cm, com.mycompany.myapp.domain.Dossier.class.getName() + ".demarches");
+            createCache(cm, com.mycompany.myapp.domain.Dossier.class.getName() + ".defaillances");
+            createCache(cm, com.mycompany.myapp.domain.Statut.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Creancier.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Debiteur.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Debiteur.class.getName() + ".situations");
+            createCache(cm, com.mycompany.myapp.domain.Debiteur.class.getName() + ".recherches");
+            createCache(cm, com.mycompany.myapp.domain.Enfant.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Demarche.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Situation.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.RechercheSolvable.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.RechercheSolvable.class.getName() + ".resultats");
+            createCache(cm, com.mycompany.myapp.domain.ResultatSolvable.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Defaillance.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

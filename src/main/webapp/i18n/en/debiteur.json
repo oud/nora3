@@ -1,0 +1,36 @@
+{
+  "nora3App": {
+    "debiteur": {
+      "home": {
+        "title": "Debiteurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Debiteur",
+        "createOrEditLabel": "Create or edit a Debiteur",
+        "notFound": "No Debiteurs found"
+      },
+      "created": "A new Debiteur is created with identifier {{ param }}",
+      "updated": "A Debiteur is updated with identifier {{ param }}",
+      "deleted": "A Debiteur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Debiteur {{ id }}?"
+      },
+      "detail": {
+        "title": "Debiteur"
+      },
+      "id": "ID",
+      "nir": "Nir",
+      "cleNir": "Cle Nir",
+      "numAllocCristal": "Num Alloc Cristal",
+      "codeOrganismeCristal": "Code Organisme Cristal",
+      "codeAgent": "Code Agent",
+      "userCreation": "User Creation",
+      "creationDate": "Creation Date",
+      "userMaj": "User Maj",
+      "majDate": "Maj Date",
+      "numMaj": "Num Maj",
+      "situation": "Situation",
+      "recherche": "Recherche",
+      "dossier": "Dossier"
+    }
+  }
+}

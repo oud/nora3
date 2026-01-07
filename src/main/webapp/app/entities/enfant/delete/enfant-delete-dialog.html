@@ -1,0 +1,24 @@
+@if (enfant) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(enfant.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="enfantDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error />
+      <p id="jhi-delete-enfant-heading" jhiTranslate="nora3App.enfant.delete.question" [translateValues]="{ id: enfant.id }">
+        Are you sure you want to delete Enfant {{ enfant.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-enfant" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times" />&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (enfant(); as enfantRef) {
+      <div>
+        <h2 data-cy="enfantDetailsHeading"><span jhiTranslate="nora3App.enfant.detail.title">Enfant</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ enfantRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.nir">Nir</span></dt>
+          <dd>
+            <span>{{ enfantRef.nir }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.cleNir">Cle Nir</span></dt>
+          <dd>
+            <span>{{ enfantRef.cleNir }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.numPersonneGaia">Num Personne Gaia</span></dt>
+          <dd>
+            <span>{{ enfantRef.numPersonneGaia }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.codeAgent">Code Agent</span></dt>
+          <dd>
+            <span>{{ enfantRef.codeAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.userCreation">User Creation</span></dt>
+          <dd>
+            <span>{{ enfantRef.userCreation }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.creationDate">Creation Date</span></dt>
+          <dd>
+            <span>{{ enfantRef.creationDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.userMaj">User Maj</span></dt>
+          <dd>
+            <span>{{ enfantRef.userMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.majDate">Maj Date</span></dt>
+          <dd>
+            <span>{{ enfantRef.majDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.numMaj">Num Maj</span></dt>
+          <dd>
+            <span>{{ enfantRef.numMaj }}</span>
+          </dd>
+          <dt><span jhiTranslate="nora3App.enfant.dossier">Dossier</span></dt>
+          <dd>
+            @if (enfant()!.dossier) {
+              <div>
+                <a [routerLink]="['/dossier', enfant()!.dossier?.id, 'view']">{{ enfantRef.dossier?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/enfant', enfantRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

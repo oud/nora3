@@ -1,0 +1,69 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102138"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nir",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cleNir",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numAllocCristal",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numPersonneCristal",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "codeOrganismeCristal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situationFamilialeDebutDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "codeSituationFamiliale",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeNationalite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Creancier",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

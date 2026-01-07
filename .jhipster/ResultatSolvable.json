@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20260107102144"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "moisSolvabiliteDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "codeEtatSolvabilite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userCreation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "userMaj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majDate",
+      "fieldType": "LocalTime"
+    },
+    {
+      "fieldName": "numMaj",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "ResultatSolvable",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
