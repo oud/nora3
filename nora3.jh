@@ -1,0 +1,152 @@
+entity Dossier {
+	numDossierNor String
+    numDossierGaia String
+    receptionDateNor LocalTime
+    validationDateNor LocalTime
+    codeOrganisme String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Statut {
+	statutDebutDate LocalTime
+    statutFinDate LocalTime
+    codeStatut String
+    motifStatut String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Creancier {
+	nir String
+    cleNir Number
+    numAllocCristal Integer
+    numPersonneCristal Integer
+    codeOrganismeCristal String
+    situationFamilialeDebutDate LocalDate
+    codeSituationFamiliale String
+    codeNationalite String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Debiteur {
+	nir String
+    cleNir Number
+    numAllocCristal Integer
+    codeOrganismeCristal String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Enfant {
+	nir String
+    cleNir Number
+    numPersonneGaia Integer
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Demarche {
+	demarcheDate LocalDate
+    numDemarche String
+    codeOrigine String
+    codeStatut String
+    codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Situation {
+	situationProDebutDate LocalDate
+    situationProfinDate LocalDate
+    codeSituation String
+    commentaire String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity RechercheSolvable {
+	rechercheSolvabiliteDebutDate LocalTime
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity ResultatSolvable {
+	moisSolvabiliteDate LocalDate
+    codeEtatSolvabilite String
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer
+}
+
+entity Defaillance {
+	moisDefaillance LocalDate
+    montantPADue Number
+    montantPAVersee Number
+    flagDetteInitiale Boolean
+	codeAgent String
+    userCreation String
+    creationDate LocalTime
+    userMaj String
+    majDate LocalTime
+    numMaj Integer	
+}
+
+relationship OneToOne {
+    Dossier{debiteur} to Debiteur
+    Dossier{creancier} to Creancier
+}
+
+relationship OneToMany {
+	Dossier{statut} to Statut
+    Dossier{enfant} to Enfant
+    Dossier{demarche} to Demarche
+    Debiteur{situation} to Situation
+    Debiteur{recherche} to RechercheSolvable
+    RechercheSolvable{resultat} to ResultatSolvable
+    Dossier{defaillance} to Defaillance
+}
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
